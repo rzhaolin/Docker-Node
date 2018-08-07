@@ -1,21 +1,28 @@
 # Hello
 
-1. 编写 Dockerfile (注意：开头必须大写，位置放在：项目的根目录下）
+#1. 编写 Dockerfile (注意：开头必须大写，位置放在：项目的根目录下）
 
    FROM node:latest   // 安装最新的node版本
+   
    RUN mkdir -p /home/node
+   
    WORKDIR /home/node
+   
    COPY . /home/node
+   
    run npm config set registry https://registry.npm.taobao.org
+   
    RUN npm install
+   
    ENTRYPOINT ["npm", "run"]
+   
    CMD ["start"]
 
-2. 将代码打包成镜像：运行docker build . 
+#2. 将代码打包成镜像：运行docker build . 
 
-3.为了方便管理，给镜像打tag:  docker tag b86282a8ba4c node-demo:v1.0.1
+#3.为了方便管理，给镜像打tag:  docker tag b86282a8ba4c node-demo:v1.0.1
 
-4. 安装并镜像
+#4. 安装并镜像
 
    docker run --name hello -p 1301:1301 -d node-demo:v1.0.1
 
@@ -29,7 +36,7 @@
 
    在终端输入：docker ps , 查看我们创建的容器运行情况。
 
-5. 验证应用
+#5. 验证应用
 
    在浏览器地址栏输入：http://localhost:1301/getname?name=哈利波特
    
